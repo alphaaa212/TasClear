@@ -3,6 +3,7 @@ pandas
 numpy
 scikit-learn
 flask-login
+psycopg2-binary
 gunicorn==23.0.0
 
 # ===============================
