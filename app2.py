@@ -1,4 +1,4 @@
-from flask import Flask, render_template,request,redirect,url_for,session,flash
+from flask import Flask, render_template,request,redirect,url_for,flash
 from datetime import datetime,timedelta
 from services.ai_function2 import predict_priority
 import psycopg2
