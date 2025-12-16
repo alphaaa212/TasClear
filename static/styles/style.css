@@ -1,0 +1,87 @@
+/* CSSのテンプレート。ここにデザインを追加予定 */
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+main {
+  margin: 0px 40px;
+  padding: 0;
+}
+
+header {
+  background-color: #289bff;
+  padding: 0px 30px;
+  width: 100%;
+  box-sizing: border-box;
+  height: 60px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h2 {
+  color: white;
+  font-size: 24px;
+}
+.menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
+  gap: 48px;
+}
+
+.menu {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  height: 100%;
+  gap: 40px;
+}
+
+.menu a.logout {
+  text-decoration: none;
+  display: inline-block;
+  color: white;
+  background-color: rgb(0, 80, 178);
+  padding: 10px 20px;
+  font-size: 14px;
+  border-radius: 20px;
+}
+
+.menu a.logout:hover {
+  background-color: rgb(56, 125, 227);
+}
+
+.menu a {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+}
+
+.menu a:hover {
+  color: rgb(207, 207, 207);
+}
+
+footer {
+  background-color: #eff5fd;
+  width: 100%;
+  height: 30px;
+  color: black;
+  text-align: center;
+  padding: 10px;
+  font-size: 12px;
+  margin-top: 30px;
+  position: fixed;
+  bottom: 0;
+  z-index: 10;
+}

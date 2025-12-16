@@ -1,0 +1,83 @@
+h1 {
+  margin-top: 60px;
+}
+
+.firstLine,
+.left,
+.right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0px;
+}
+
+.inputLine {
+  border: none;
+  outline: none;
+  width: 40%;
+  height: 40px;
+  border-bottom: 1px solid gray;
+  padding: 4px 8px;
+}
+
+.multiLine {
+  display: flex;
+  text-align: center;
+  gap: 10px;
+  margin: 20px 0px 0px 0px;
+}
+
+.inputBox {
+  display: flex;
+  text-align: center;
+  height: 28px;
+  font-size: 12px;
+  border-radius: 4px;
+  border: 1px solid gray;
+  padding: 3px 5px;
+}
+
+.memoBox {
+  padding: 62px 300px;
+  background-color: #d3eaff;
+  border: none;
+  margin-bottom: 20px;
+}
+
+.button {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 28px;
+  gap: 18px;
+}
+
+button {
+  text-align: center;
+  height: 36px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid gray;
+  padding: 6px 10px;
+  margin-bottom: 60px;
+}
+
+.addBtn {
+  background-color: #afe2ff;
+}
+
+.addBtn:hover {
+  background-color: #91d1ff;
+}
+
+.cancelBtn {
+  background-color: #d8e2e5;
+}
+
+.cancelBtn:hover {
+  background-color: #b0bfc4;
+}
+
+select {
+  border: black;
+  border-radius: 5px;
+}

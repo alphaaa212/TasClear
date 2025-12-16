@@ -1,0 +1,80 @@
+{% extends "layout.html" %}{% block head %}
+<link
+  rel="stylesheet"
+  href="{{url_for('static',filename='styles/taskList.css')}}"
+/>{% endblock %} {%block title%}タスク一覧{%endblock%} {%block content%}
+
+<!-- フィルターと並べ替えの設定コンテナ -->
+<div class="setting">
+  <form method="get">
+    <div class="filterContainer">
+      <h3>フィルター：</h3>
+      <form method="get" action="/list">
+        <label for="category">カテゴリ</label>
+        <select name="category" id="category" onchange="this.form.submit()">
+          <option value="すべて" {% if selected_cat == "すべて" %}selected{% endif %}>すべて</option>
+          {% for cat in cat_list %}
+            <option value="{{cat}}" {% if selected_cat == cat %}selected{% endif %}>{{cat}}</option>
+          {% endfor %}
+        </select>
+
+      <label class="sortValue" for="sortValue">並べ替え：</label>
+      <select name="sortValue" id="sortValue" onchange="this.form.submit()">
+        <option value="latest" {% if sort_value == "latest" %}selected{% endif %}>最新順</option>
+        <option value="priority" {% if sort_value == "priority" %}selected{% endif %}>優先度順</option>
+        <option value="rem_days" {% if sort_value == "rem_days" %}selected{% endif %}>締切が近い順</option>
+        <option value="time_required" {% if sort_value == "time_required" %}selected{% endif %}>所要時間が長い順</option>
+      </select>
+    </div>
+  </form>
+</div>
+
+<h1>タスク一覧</h1>
+
+<!-- タスク一覧のテーブル（表） -->
+<table border="1">
+  <tr>
+    <th>タスク名</th>
+    <th>残り日数</th>
+    <th>所要時間</th>
+    <th>ダメージ</th>
+    <!-- <th>影響範囲</th> -->
+    <th>カテゴリ</th>
+    <th>管理</th>
+  </tr>
+
+  {% for task in task_list %}
+  <tr>
+    <td>{{task.task_name}}</td>
+    <td>{{task.rem_days}}</td>
+    <td>{{task.time_required}}</td>
+    <td>{{task.criticality}}</td>
+    <!-- <td>{{task.impact_scope}}</td> -->
+    <td>{{task.cat_name}}</td>
+    <td>
+        <div class="buttonArea">
+          <form
+              action="{{url_for('edit_task',task_id=task.task_id)}}"
+              method="GET"
+            >
+              <button class="handle">
+                <i class="fa-solid fa-pen-to-square"></i>
+              </button>
+            </form>
+            <form
+              action="{{url_for('delete_task',task_id=task.task_id)}}"
+              method="POST"
+              onsubmit="return confirm('本当に削除しますか？')"
+            >
+              <button type="submit" class="handle">
+                <i class="fa-solid fa-trash"></i>
+              </button>
+            </form>
+        <!-- <div class="editBtn button"><i class="fa-solid fa-pen-to-square"></i></div>
+        <div class="deleteBtn button"><i class="fa-solid fa-trash"></i></div> -->
+      </div>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+{%endblock%}

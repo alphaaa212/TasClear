@@ -1,0 +1,72 @@
+{% extends "layout.html" %}{% block head %}
+<link
+  rel="stylesheet"
+  href="{{url_for('static',filename='styles/taskAdd2.css')}}"
+/>{% endblock %} {%block title%}タスク追加{%endblock%} {%block content%}
+<h1>タスク追加</h1>
+
+<form action="{{url_for('add_task2')}}" method="POST">
+
+  <!-- １行目 -->
+  <div class="firstLine">
+    <h3>タスク名：</h3>
+    <input class="inputLine" type="text" name="task_name" required />
+  </div>
+
+  <!-- 2行目 -->
+  <div class="multiLine">
+    <div class="left">
+      <h3>〆切日：</h3>
+      <input class="inputBox" type="datetime-local" name="specific_date" required />
+    </div>
+    <div class="right">
+      <h3>所要時間：</h3>
+      <input class="inputLine" type="number" name="time_required" placeholder="半角で入力（h）" required />
+    </div>
+  </div>
+
+  <!-- 3行目 -->
+  <div class="multiLine">
+    <div class="left">
+      <h3>ダメージ：</h3>
+      <select class="inputBox" name="criticality" required>
+        <option value="なし" >なし</option>
+        <option value="小">小</option>
+        <option value="中">中</option>
+        <option value="大">大</option>
+      </select>
+    </div>
+    <div class="right">
+      <h3>影響範囲：</h3>
+      <select class="inputBox" name="impact_scope" required>
+        <option value="onlyMe">自分のみ</option>
+        <option value="smallGroup" >小グループ</option>
+        <option value="allTeam">チーム全体</option>
+        <option value="moreThanTeam">それ以上</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- 4行目 -->
+  <div class="multiLine">
+    <div class="left">
+      <h3>カテゴリ：</h3>
+      <select class="inputBox" name="category" required>
+        {% for cat in cat_list %}
+        <option value="{{cat}}">{{ cat }}</option>
+        {% endfor %}
+      </select>
+      <h4>＋</h4>
+    </div>
+  </div>
+
+  <!-- 5行目以下 -->
+  <h3>メモ</h3>
+  <input class="memoBox" type="text" name="memo"></div>
+  <div class="button">
+      <button class="addBtn">追加</button>
+      <button class="cancelBtn">キャンセル</button>
+  </div>
+
+</form>
+{%endblock%}

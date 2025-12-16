@@ -1,0 +1,118 @@
+.titleLine {
+  margin-top: 60px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.taskItem {
+  width: 70%;
+  border: 1px solid black;
+  border-radius: 4px;
+  padding: 10px;
+  margin: 0 40px 10px 40px;
+}
+
+.handle :hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.left {
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+h5 {
+  margin-bottom: 0px;
+}
+
+.memoBox {
+  border: none;
+  background-color: #e8f4ff;
+  padding: 20px 60px;
+  margin-top: 4px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.firstLine {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  position: relative;
+}
+.rem_days {
+  position: absolute;
+  right: 40px;
+  font-size: 20px;
+}
+
+.firstLine h3,
+.firstLine h4,
+.firstLine p,
+.firstLine .iconify {
+  margin: 0; /* デフォルトマージンをリセット */
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  height: 100%;
+}
+
+.category {
+  border: 1px solid black;
+  border-radius: 4px;
+}
+
+.add-imp {
+  background-color: #5c5c5c;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.add-imp:hover {
+  background-color: #7e7e7e;
+}
+
+.finishTask {
+  font-size: 12px;
+  background-color: #036ae0;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.finishTask:hover {
+  background-color: #0580ff;
+}
+
+button {
+  border: none;
+  background-color: transparent;
+}

@@ -1,0 +1,76 @@
+/* 全体の背景（空色グラデーション） */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Arial", "Hiragino Sans", "Meiryo", sans-serif;
+  background: linear-gradient(to bottom, #a8d8ff, #e8f6ff);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+/* タイトル */
+h1 {
+  color: #1e6bb8;
+  margin-bottom: 20px;
+  font-size: 28px;
+}
+
+/* フォームボックス */
+form {
+  background: #ffffff;
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  text-align: center;
+}
+
+/* ラベルと入力欄 */
+label {
+  font-size: 16px;
+  color: #1e6bb8;
+  display: block;
+  margin-bottom: 12px;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 240px;
+  padding: 10px;
+  border: 1px solid #85c1ff;
+  border-radius: 8px;
+  outline: none;
+  margin-top: 5px;
+}
+
+/* ボタン */
+button {
+  margin-top: 15px;
+  width: 260px;
+  padding: 10px;
+  background: #4da8ff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #1e6bb8;
+}
+
+/* リンク */
+a {
+  display: inline-block;
+  margin-top: 18px;
+  color: #1e6bb8;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+a:hover {
+  text-decoration: underline;
+}

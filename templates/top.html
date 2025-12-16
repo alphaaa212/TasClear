@@ -1,0 +1,70 @@
+{% extends "layout.html" %} {% block head %}
+<link
+  rel="stylesheet"
+  href="{{url_for('static',filename='styles/top.css')}}"
+/>{% endblock %} {%block title%}今日のタスク{%endblock%} {%block content%}
+<div class="titleLine">
+  <div class="fa-regular fa-calendar fa-2x"></div>
+  <h1>{{username}}さんの今日のタスク</h1>
+  <!-- {#
+   <form action="{{url_for('add_imp_task')}}" method="get">
+    <button type="submit" class="add-imp_task">
+      <i class="fa-solid fa-plus"></i>
+    </button>
+  </form> 
+  #}-->
+</div>
+<article class="todayTask">
+  {% if top_tasks %} {% for task in top_tasks %}
+  <section class="taskItem">
+    <div class="row">
+      <div class="left">
+        <div class="top">
+          <div class="firstLine">
+            <h3>{{loop.index}}</h3>
+            <p class="taskName">{{task.task_name}}</p>
+            <form
+              action="{{url_for('edit_task',task_id=task.task_id)}}"
+              method="GET"
+            >
+              <button class="handle">
+                <i class="fa-solid fa-pen-to-square fa-2x"></i>
+              </button>
+            </form>
+            <form
+              action="{{url_for('delete_task',task_id=task.task_id)}}"
+              method="POST"
+              onsubmit="return confirm('本当に削除しますか？')"
+            >
+              <button type="submit" class="handle">
+                <i class="fa-solid fa-trash fa-2x"></i>
+              </button>
+            </form>
+            <h4 class="rem_days">〆切：残り{{task.rem_days}}日</h4>
+          </div>
+        </div>
+        <div class="bottom">
+          <h5>メモ：</h5>
+          <div class="memoBox">{{task.memo or ""}}</div>
+        </div>
+      </div>
+      <div class="right">
+        <div class="category">{{task.cat_name}}</div>
+        <h6>
+          所要時間 <span style="font-size: 16px">{{task.time_required}}</span> h
+        </h6>
+        <form
+          action="{{url_for('delete_task',task_id=task.task_id)}}"
+          method="POST"
+          onsubmit="return confirm('完了したタスクは戻せません。\n完了してよろしいですか？')"
+        >
+          <button type="submit" class="finishTask">完了！</button>
+        </form>
+      </div>
+    </div>
+  </section>
+  {% endfor %} {% else %}
+  <p>登録されたタスクがありません</p>
+  {% endif %}
+</article>
+{%endblock%}

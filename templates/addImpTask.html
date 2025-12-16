@@ -1,0 +1,61 @@
+{% extends "layout.html" %}{% block head %}
+<link
+  rel="stylesheet"
+  href="{{url_for('static',filename='styles/taskList.css')}}"
+/>{% endblock %} {%block title%}重要タスク追加{%endblock%} {%block content%}
+<h1>トップ画面にタスクを追加するページ</h1>
+
+<!-- フィルターと並べ替えの設定コンテナ -->
+<div class="setting">
+  <form method="get">
+    <div class="filterContainer">
+      <h3>フィルター：</h3>
+      <div class="filter">
+        <h3>カテゴリ</h3>
+        <select name="category" onchange="this.form.submit()">
+          <option value="すべて">すべて</option>
+          {% for cat in cat_list %}
+            <option value="{{cat}}" {% if selected_cat == cat %}selected{% endif %}>{{cat}}</option>
+          {% endfor %}
+        </select>
+      </div>
+    </div>
+    <div class="categoryContainer">
+      <h3>並べ替え：</h3>
+      <select name="sortValue">
+        <option value="優先度">優先度</option>
+        <option value="締切日">締切日</option>
+        <option value="所要時間">残り日数</option>
+      </select>
+    </div>
+  </form>
+</div>
+
+<!-- タスク一覧のテーブル（表） -->
+<form action="{{url_for(add_to_top)}}" method="POST">
+  <table border="1">
+    <tr>
+      <th>選択</th>
+      <th>タスク名</th>
+      <th>残り日数</th>
+      <th>所要時間</th>
+      <th>ダメージ</th>
+      <th>影響範囲</th>
+      <th>カテゴリ</th>
+    </tr>
+
+    {% for task in task_list %}
+    <tr>
+      
+      <td>{{task.task_name}}</td>
+      <td>{{task.rem_days}}</td>
+      <td>{{task.time_required}}</td>
+      <td>{{task.criticality}}</td>
+      <td>{{task.impact_scope}}</td>
+      <td>{{task.cat_name}}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  <button type="submit">タスクを追加</button>
+</form>
+{%endblock%}

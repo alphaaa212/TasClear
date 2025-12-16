@@ -1,0 +1,86 @@
+/* 全体の背景（薄い空色グラデーション） */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Arial", "Hiragino Sans", "Meiryo", sans-serif;
+  background: linear-gradient(to bottom, #a8d8ff, #e8f6ff); /* 空色グラデ */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+/* タイトル */
+h1 {
+  color: #1e6bb8; /* 深い青（空のアクセント） */
+  margin-bottom: 20px;
+  font-size: 28px;
+  text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.5);
+}
+
+/* フォームボックス */
+form {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 30px 40px;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(6px);
+  text-align: center;
+}
+
+/* ラベルと入力欄 */
+label {
+  font-size: 16px;
+  color: #1e6bb8;
+  display: block;
+  margin-bottom: 12px;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 240px;
+  padding: 10px;
+  border: 1px solid #85c1ff;
+  border-radius: 8px;
+  outline: none;
+  transition: 0.2s;
+  margin-top: 6px;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+  border-color: #4da8ff;
+  box-shadow: 0 0 6px rgba(77, 168, 255, 0.6);
+}
+
+/* ボタン */
+button {
+  margin-top: 15px;
+  width: 260px;
+  padding: 10px;
+  background: #4da8ff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #1e6bb8;
+}
+
+/* 新規登録リンク */
+a {
+  display: inline-block;
+  margin-top: 18px;
+  color: #1e6bb8;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+a:hover {
+  text-decoration: underline;
+}

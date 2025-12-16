@@ -1,0 +1,101 @@
+{% extends "layout.html" %}{% block head %}
+<link
+  rel="stylesheet"
+  href="{{url_for('static',filename='styles/taskLanking.css')}}"
+/>
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.14.0/Sortable.min.js"></script>
+{% endblock %} {%block title%}タスクランキング{%endblock%} {%block content%}
+
+<h1>タスクランキング</h1>
+<!-- フィルターと並べ替えの設定コンテナ -->
+<!-- <div class="setting"> -->
+  <!-- actionの中身を後で変える（データの送信先の指定） -->
+  <!-- <form action="" method="GET" class="searchForm">
+    <input type="text" name="taskName" placeholder="タスク名を入力" />
+    <button class="submitButton" type="submit">検索</button>
+  </form>
+
+  <div class="filter">
+    <select name="category">
+      {% for cat in cat_list %}
+      <option value="{{cat}}">{{cat}}</option>
+      {% endfor %}
+    </select>
+  </div> -->
+
+  <!-- <div class="filter">
+    <select name="status">
+      <option value="進捗状況">進捗状況</option>
+      <option value="未着手">未着手</option>
+      <option value="作業中">作業中</option>
+      <option value="中断">中断中</option>
+      <option value="完了">完了</option>
+    </select>
+  </div> -->
+</div>
+
+<h3>AI優先度順タスクリスト</h3>
+<!-- タスク一覧のテーブル（表） -->
+
+<form action="{{url_for('lanking')}}" method="POST" id="lankingForm">
+  <table border="1">
+    <thead>
+      <tr>
+        <th>⇅</th>
+        <th>タスク名</th>
+        <th>締切までの日数</th>
+        <th>所要時間</th>
+        <th>ダメージ</th>
+        <!-- <th>影響範囲</th> -->
+        <th>カテゴリ</th>
+      </tr>
+    </thead>
+    <tbody id="sortable-list">
+      {% for task in task_list %}
+      <tr data-task-id="{{task.task_id}}">
+        <td class="handle">☰</td>
+        <td>{{task.task_name}}</td>
+        <td>{{task.rem_days}}</td>
+        <td>{{task.time_required}}</td>
+        <td>{{task.criticality}}</td>
+        <!-- <td>{{task.impact_scope}}</td> -->
+        <td>{{task.cat_name}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <!-- 並び順を一時的に保持 -->
+  <input type="hidden" name="task_order" id="orderInput" />
+
+  <div class="buttonArea">
+    <button class="addBtn" type="submit">ランキング確定</button>
+    <button class="cancelBtn" type="button" onclick="window.history.back()">
+      キャンセル
+    </button>
+  </div>
+</form>
+
+<script>
+  // Sortable.jsの初期化
+  const sortable = new Sortable(document.getElementById("sortable-list"), {
+    handle: ".handle", // ドラッグハンドルの指定
+    animation: 150, // アニメーションの速度（ミリ秒）
+  });
+
+  document.getElementById("lankingForm").addEventListener("submit", (e) => {
+    // フォーム送信時に並び順を取得してhidden inputにセット
+    const rows = document.querySelectorAll("#sortable-list tr");
+    const order = Array.from(rows).map((row) => row.dataset.taskId);
+    document.getElementById("orderInput").value = order.join(",");
+    // ここでPOST送信され、Flask側で処理される
+  });
+
+  window.onload = () => {
+    const rows = document.querySelectorAll("#sortable-list tr");
+    const order = Array.from(rows).map((row) => row.dataset.taskId);
+    document.getElementById("orderInput").value = order.join(",");
+  };
+</script>
+
+{%endblock%}

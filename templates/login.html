@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static',filename='styles/login.css')}}"
+    />
+    <!-- 各ページ専用タイトルを挿入するブロック -->
+    <title>ログイン画面</title>
+  </head>
+
+  <body>
+    <h1>ログインフォーム</h1>
+    <form method="post" action="{{ url_for('login') }}">
+      <label for="username"
+        >ユーザー名:
+        <input type="text" id="username" name="username" required />
+      </label>
+      <br />
+      <label for="password"
+        >パスワード:
+        <input type="password" id="password" name="password" required />
+      </label>
+      <br />
+      <button type="submit">ログイン</button>
+    </form>
+    <a href="{{url_for('signin')}}">新規登録はこちら</a>
+  </body>
+</html>
